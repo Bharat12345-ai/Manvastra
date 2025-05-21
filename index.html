@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manvastra</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+    background: #111;
+    color: #eee;
+    overflow-x: hidden;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  }
+  header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #f4c542;
+    cursor: default;
+  }
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #f4c542;
+  }
+
+  .hero {
+    height: 85vh;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    color: #f4c542;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  .hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  .btn-shop {
+    background: #f4c542;
+    color: #000;
+    border: none;
+    padding: 15px 45px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 8px 15px rgba(244,197,66,0.4);
+    transition: all 0.3s ease;
+  }
+  .btn-shop:hover {
+    background: #ddb32a;
+    box-shadow: 0 15px 25px rgba(221,179,42,0.6);
+    transform: translateY(-3px);
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+  h2.section-title {
+    font-size: 2.5rem;
+    color: #f4c542;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 4px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+  }
+  .product-card {
+    background: #222;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px rgba(244,197,66,0.7);
+  }
+  .product-image {
+    width: 100%;
+    display: block;
+    height: 300px;
+    object-fit: cover;
+  }
+  .product-info {
+    padding: 20px;
+  }
+  .product-info h3 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    color: #f4c542;
+  }
+  .product-info p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #ddd;
+  }
+
+  /* Fade in animation on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero-content h1 {
+      font-size: 2.4rem;
+    }
+    .btn-shop {
+      padding: 12px 30px;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MANVASTRA</div>
+  <nav>
+    <a href="#products">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Wear Your Story</h1>
+    <p>Traditional Indian textiles with a modern twist.</p>
+    <button class="btn-shop" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'});">Shop Now</button>
+  </div>
+</section>
+
+<main>
+  <h2 class="section-title fade-in">Featured Products</h2>
+  <section id="products" class="products">
+    <article class="product-card fade-in">
+      <img class="product-image" src="https://bombayhood.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-30-at-3.29.00-PM.jpeg" alt="Chanderi Sari" />
+      <div class="product-info">
+        <h3>Chanderi Sari</h3>
+        <p>₹6,000</p>
+      </div>
+    </article>
+
+    <article class="product-card fade-in">
+      <img class="product-image" src="https://bombayhood.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-30-at-3.30.16-PM.jpeg" alt="Cotton Kurta" />
+      <div class="product-info">
+        <h3>Cotton Kurta</h3>
+        <p>₹2,300</p>
+      </div>
+    </article>
+
+    <article class="product-card fade-in">
+      <img class="product-image" src="https://bombayhood.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-30-at-3.27.43-PM.jpeg" alt="Block Printed Dress" />
+      <div class="product-info">
+        <h3>Block Printed Dress</h3>
+        <p>₹4,500</p>
+      </div>
+    </article>
+
+    <article class="product-card fade-in">
+      <img class="product-image" src="https://bombayhood.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-30-at-3.31.10-PM.jpeg" alt="Silk Dupatta" />
+      <div class="product-info">
+        <h3>Silk Dupatta</h3>
+        <p>₹1,200</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<script>
+  // Scroll fade-in animation
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+</body>
+</html>
